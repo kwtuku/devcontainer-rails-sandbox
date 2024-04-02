@@ -19,8 +19,14 @@ default: &default
   # https://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
+devcontainer: &devcontainer
+  host: db
+  username: postgres
+  password: postgres
+
 development:
   <<: *default
+  <<: *devcontainer
   database: devcontainer_rails_sandbox_development
 
   # The specified database role being used to connect to PostgreSQL.
@@ -55,6 +61,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
+  <<: *devcontainer
   database: devcontainer_rails_sandbox_test
 
 # As with config/credentials.yml, you never want to store sensitive information,
