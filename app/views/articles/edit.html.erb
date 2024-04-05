@@ -1,10 +1,10 @@
-<h1>Editing article</h1>
+<h1 class="text-2xl font-bold tracking-tight text-gray-900">Editing article</h1>
 
-<%= render "form", article: @article %>
+<div class="mt-10">
+  <%= render "form", article: @article %>
+</div>
 
-<br>
-
-<div>
-  <%= link_to "Show this article", @article %> |
-  <%= link_to "Back to articles", articles_path %>
+<div class="mt-10 flex items-center gap-x-6">
+  <%= link_to "Show this article", article_path(@article), class: "font-medium text-indigo-600 hover:text-indigo-500" %>
+  <%= link_to "Back to articles", articles_path, class: "font-medium text-indigo-600 hover:text-indigo-500" %>
 </div>

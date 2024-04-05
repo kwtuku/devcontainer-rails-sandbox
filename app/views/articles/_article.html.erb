@@ -1,12 +1,19 @@
 <div id="<%= dom_id article %>">
-  <p>
-    <strong>Title:</strong>
-    <%= article.title %>
-  </p>
-
-  <p>
-    <strong>Body:</strong>
-    <%= article.body %>
-  </p>
-
+  <div class="flex items-center gap-x-4 text-xs">
+    <time datetime="<%= article.created_at.to_date.to_s %>" class="text-gray-500"><%= l(article.created_at.to_date, format: "%b %-d, %Y") %></time>
+  </div>
+  <div class="group relative">
+    <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+      <% if current_page?(article_path(article)) %>
+        <span class="absolute inset-0"></span>
+        <%= article.title %>
+      <% else %>
+        <%= link_to article_path(article) do %>
+          <span class="absolute inset-0"></span>
+          <%= article.title %>
+        <% end %>
+      <% end %>
+    </h3>
+    <p class="mt-5 line-clamp-3 text-sm leading-6 text-gray-600"><%= article.body %></p>
+  </div>
 </div>
