@@ -1,5 +1,5 @@
 <% if notice.present? %>
-  <div class="mb-6 mx-auto max-w-4xl">
+  <div class="mb-6 mx-auto max-w-4xl" data-controller="element-removal">
     <div class="rounded-md bg-green-50 p-4">
       <div class="flex">
         <div class="flex-shrink-0">
@@ -12,7 +12,7 @@
         </div>
         <div class="ml-auto pl-3">
           <div class="-mx-1.5 -my-1.5">
-            <button class="inline-flex rounded-md bg-green-50 p-1.5 text-green-500">
+            <button class="inline-flex rounded-md bg-green-50 p-1.5 text-green-500" data-action="element-removal#remove">
               <span class="sr-only">Dissmiss</span>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="h-5 w-5">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
