@@ -1,7 +1,9 @@
+# https://github.com/rails/rails/blob/main/railties/lib/rails/generators/rails/devcontainer/templates/.devcontainer/compose.yaml.tt
+
 version: '3'
 
 services:
-  app:
+  rails-app:
     build:
       context: ..
       dockerfile: .devcontainer/Dockerfile
@@ -13,7 +15,8 @@ services:
     command: sleep infinity
 
     # Runs app on the same network as the database container, allows "forwardPorts" in devcontainer.json function.
-    network_mode: service:db
+    networks:
+      - default
 
     # Use "forwardPorts" in **devcontainer.json** to forward an app port locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
@@ -40,9 +43,17 @@ services:
       #    username: postgres
       #    password: postgres
       #    database: myapp_development
+    networks:
+      - default
 
     # Add "forwardPorts": ["5432"] to **devcontainer.json** to forward PostgreSQL locally.
     # (Adding the "ports" property to this file will not forward from a Codespace.)
+
+  selenium:
+    image: seleniarm/standalone-chromium
+    restart: unless-stopped
+    networks:
+      - default
 
 volumes:
   postgres-data:
