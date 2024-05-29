@@ -36,7 +36,9 @@ class ArticlesTest < ApplicationSystemTestCase
 
   test "should destroy Article" do
     visit article_url(@article)
-    click_on "Destroy this article", match: :first
+    accept_confirm "Are you sure you want to delete the article?" do
+      click_on "Destroy this article", match: :first
+    end
 
     assert_text "Article was successfully destroyed"
   end
