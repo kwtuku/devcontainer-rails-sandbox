@@ -19,3 +19,5 @@ ENV RAILS_DEVELOPMENT_HOSTS=".githubpreview.dev,.preview.app.github.dev,.app.git
 # RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && npm install -g <your-package-here>" 2>&1
 
 RUN su vscode -c "source /usr/local/share/nvm/nvm.sh && nvm install --lts"
+
+RUN su vscode -c "/usr/local/rvm/bin/rvm implode --force"
